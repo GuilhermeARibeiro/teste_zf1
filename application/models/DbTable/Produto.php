@@ -67,7 +67,7 @@ class Model_DbTable_Produto extends Zend_Db_Table_Abstract
 		$sql1 = $this->_db->update('tb_produto', array("desc_produto"=>$conteudo['desc_produto'],"promocao_produto"=>$conteudo['promocao_produto'],"porcentagem_produto"=>$conteudo['porcentagem_produto'], "fk_categoria"=>$conteudo['fk_categoria']), "pk_produto ='{$id}'");
 		$this->_db->prepare($sql1);
 
-		$sql2 = $this->_db->update('tb_preco', array("vlr_preco"=>$conteudo['vlr_preco']), "fk_produto ='{$id}'");
+		$sql2 = $this->_db->update('tb_preco', array("dta_inc_preco" =>$conteudo['dta_inc_preco'], 'dta_validade_preco'=>$conteudo['dta_validade_preco'], "vlr_preco"=>$conteudo['vlr_preco']), "fk_produto ='{$id}'");
 		$this->_db->prepare($sql2);
 
 		return true;
@@ -131,9 +131,16 @@ class Model_DbTable_Produto extends Zend_Db_Table_Abstract
 		$sql = $this->_db->select()
 					->from(array('pdt'=>'tb_produto' ), array('desc_produto','porcentagem_produto'))
 					->join(array('prc' => 'tb_preco'),'pdt.pk_produto = prc.fk_produto')
-					->where(" prc.dta_validade_preco between '{$dta_ini}' and '{$dta_fim}' and  pdt.fk_categoria = '{$id}'");
+					->where(" prc.dta_validade_preco between '{$dta_ini}' and '{$dta_fim}' and  pdt.fk_categoria = '{$id}' AND pdt.promocao_produto = 1");
 
-		return $this->_db->fetchAll($sql);
+		$resultado = $this->_db->fetchAll($sql);
+		
+		if($resultado){
+			return $resultado;
+		}else{
+			return null;
+		}
+		
 
 	}
 
