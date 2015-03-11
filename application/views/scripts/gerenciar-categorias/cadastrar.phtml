@@ -1,0 +1,30 @@
+<div class="navbar navbar-inverse" role="navigation">
+  <div class="container">
+	<?php echo $this->action('navigation','index')?>
+  </div><!-- /.container -->
+</div><!-- /.navbar -->
+
+<h1>Cadastro de categoria</h1>
+
+<form name="formCategoria" id="formCategoria" method="post" action="<?php echo $this->url(array('controller' => 'gerenciar-categorias', 'action' => 'cadastrar')); ?>">
+    <table class="form">
+        <tr>
+            <td><?php echo $this->form->desc_categoria->getLabel()?></td>
+            <td>
+                <?php echo $this->form->desc_categoria?>
+                <?php if($this->form->desc_categoria->getMessages()):?>
+                    <div class="errors">
+                        <?php echo current($this->form->desc_categoria->getMessages())?>
+                    </div>
+                <?php endif; ?>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <button type="button" class="btn" onclick="document.location.href='<?php echo $this->url(array('controller' => 'gerenciar-categorias', 'action' => 'index')); ?>'">Cancelar</button>
+                <button type="submit" class="btn">Cadastrar</button>
+            </td>
+        </tr>
+    </table>
+</form>

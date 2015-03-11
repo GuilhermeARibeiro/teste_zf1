@@ -1,0 +1,33 @@
+<div class="navbar navbar-inverse" role="navigation">
+  <div class="container">
+	<?php echo $this->action('navigation','index')?>
+  </div><!-- /.container -->
+</div><!-- /.navbar -->
+
+<h1>Produtos</h1>
+
+<p><a href="<?php echo $this->url(array('controller' => 'gerenciar-produtos', 'action' => 'cadastrar')); ?>" class="btn btn-primary">Cadastrar Nova</a></p>
+
+<div class="well" style="width: 750px;">
+    <table class="table">
+        <tr>
+            <th style="width: 40px;">ID</th>
+            <th>Nome</th>
+            <th>Preco</th>
+            <th style="width: 50px;">Opções</th>
+        </tr>
+        <?php if (count($this->produtos)):?>
+        <?php foreach ($this->produtos as $item):?>
+        <tr>
+            <td><?php echo $item['pk_produto']?></td>
+            <td><?php echo $item['desc_produto']?></td>
+            <td><?php echo $item['vlr_preco']?></td>
+            <td>
+                <a href="<?php echo $this->url(array('controller' => 'gerenciar-produtos', 'action' => 'alterar', 'id' => $item['pk_produto'], 'id_preco' => $item['pk_preco'])); ?>"><img src="/skin/classic/icons/pencil.png" /></a>
+                <a onclick="return confirm('Você tem certeza que deseja excluir o produto <?php echo $item['desc_produto']?>?')" href="<?php echo $this->url(array('controller' => 'gerenciar-produtos', 'action' => 'excluir', 'id' => $item['pk_produto'])); ?>"><img src="/skin/classic/icons/cross.png" /></a>
+            </td>
+        </tr>
+        <?php endforeach;?>
+        <?php endif;?>
+    </table>
+</div>

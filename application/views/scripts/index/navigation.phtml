@@ -1,0 +1,16 @@
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/">Teste</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li <?php if ($this->page == 'produtos'):?>class="active"<?php endif;?>><a href="<?php echo $this->url(array('controller' => 'index', 'action' => 'index')); ?>">Produtos</a></li>
+            <li <?php if ($this->page == 'instrucoes'):?>class="active"<?php endif;?>><a href="<?php echo $this->url(array('controller'=>'index', 'action'=>'instrucoes'))?>">Instruções</a></li>
+            <li <?php if ($this->page == 'gerenciarProdutos'):?>class="active"<?php endif;?>><a href="<?php echo $this->url(array('controller'=>'gerenciar-produtos', 'action'=>'index'))?>">Gerenciar Produtos</a></li>
+            <li <?php if ($this->page == 'gerenciarCategorias'):?>class="active"<?php endif;?>><a href="<?php echo $this->url(array('controller'=>'gerenciar-categorias', 'action'=>'index'))?>">Gerenciar Categorias</a></li>
+          </ul>
+        </div><!-- /.nav-collapse -->

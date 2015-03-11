@@ -1,0 +1,19 @@
+a:link,
+a:visited
+{
+    /*color: #0398CA;*/
+}
+
+.form {
+	min-width: 300px;
+	border:#CCC 1px solid;
+}
+
+.form tr td {
+	padding: 5px;
+}
+
+.errors {
+	font-size: 11px;
+	color: red;
+}

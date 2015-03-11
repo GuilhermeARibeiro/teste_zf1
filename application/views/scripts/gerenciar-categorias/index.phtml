@@ -1,0 +1,31 @@
+<div class="navbar navbar-inverse" role="navigation">
+  <div class="container">
+	<?php echo $this->action('navigation','index')?>
+  </div><!-- /.container -->
+</div><!-- /.navbar -->
+
+<h1>Categorias</h1>
+
+<p><a href="<?php echo $this->url(array('controller' => 'gerenciar-categorias', 'action' => 'cadastrar')); ?>" class="btn btn-primary">Cadastrar Nova</a></p>
+
+<div class="well" style="width: 750px;">
+    <table class="table">
+        <tr>
+            <th style="width: 40px;">ID</th>
+            <th>Nome</th>
+            <th style="width: 50px;">Opções</th>
+        </tr>
+        <?php if (count($this->categorias)):?>
+        <?php foreach ($this->categorias as $item):?>
+        <tr>
+            <td><?php echo $item['pk_categoria']?></td>
+            <td><?php echo $item['desc_categoria']?></td>
+            <td>
+                <a href="<?php echo $this->url(array('controller' => 'gerenciar-categorias', 'action' => 'alterar', 'id' => $item['pk_categoria'])); ?>"><img src="/skin/classic/icons/pencil.png" /></a>
+                <a onclick="return confirm('Você tem certeza que deseja excluir a categoria <?php echo $item['desc_categoria']?>?')" href="<?php echo $this->url(array('controller' => 'gerenciar-categorias', 'action' => 'excluir', 'id' => $item['pk_categoria'])); ?>"><img src="/skin/classic/icons/cross.png" /></a>
+            </td>
+        </tr>
+        <?php endforeach;?>
+        <?php endif;?>
+    </table>
+</div>

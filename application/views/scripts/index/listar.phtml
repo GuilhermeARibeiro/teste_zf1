@@ -1,0 +1,56 @@
+   <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+      <div class="container">
+		<?php echo $this->action('navigation','index')?>
+      </div><!-- /.container -->
+    </div><!-- /.navbar -->
+
+    <div class="container">
+
+      <div class="row row-offcanvas row-offcanvas-right">
+        <div class="col-xs-12 col-sm-9">
+
+          <div class="row">
+			<table class="table table-striped">
+				<tr>
+					<th>Produto</th>
+					<th>Valor</th>
+					<th style="width: 100px">&nbsp;</th>
+				</tr>
+				<tr>
+					<td>Adesivo de papel</td>
+					<td>R$ 5,00</td>
+					<td> <a href="#" class="btn btn-primary btn-lg ">Comprar</a></td>
+				</tr>
+				<tr>
+					<td>Adesivo de papel</td>
+					<td>R$ 5,00</td>
+					<td> <a href="#" class="btn btn-primary btn-lg ">Comprar</a></td>
+				</tr>
+				<tr>
+					<td>Adesivo de papel</td>
+					<td>R$ 15,00</td>
+					<td> <a href="#" class="btn btn-primary btn-lg ">Comprar</a></td>
+				</tr>
+			</table>
+
+          </div><!--/row-->
+        </div><!--/span-->
+
+        <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+          <?php echo $this->action('menu-lateral','index')?>
+        </div><!--/span-->
+      </div><!--/row-->
+
+      <hr>
+
+      <footer>
+        <p>&copy; Atualcard 2013</p>
+      </footer>
+
+    </div><!--/.container-->
+<?php
+$this->headScript()->appendFile( $this->baseUrl().'/skin/classic/offcanvas/js/html5shiv.js',	'text/javascript',	array('conditional' => 'lt IE 9'));
+$this->headScript()->appendFile( $this->baseUrl().'/skin/classic/offcanvas/js/respond.min.js',	'text/javascript',	array('conditional' => 'lt IE 9'));
+$this->headScript()->appendFile( $this->baseUrl().'/skin/classic/offcanvas/js/offcanvas.js',	'text/javascript');
+$this->headLink()->appendStylesheet( $this->baseUrl().'/skin/classic/offcanvas/css/offcanvas.css','screen');
+?>

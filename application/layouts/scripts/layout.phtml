@@ -1,0 +1,32 @@
+<?php echo $this->doctype();  ?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<?php echo $this->headTitle() . "\n"; ?>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<?php echo $this->headMeta() . "\n"; ?>
+		<meta name="keywords" content="" />
+		<link rel="shortcut icon" href="/favicon.ico" />
+
+		<link rel="stylesheet" type="text/css" href="<?php echo $this->cssPath; ?>/estilo.css" media="screen" />
+		<link rel="stylesheet" type="text/css" href="<?php echo $this->cssPath; ?>/jquery.autocomplete.css" media="screen" />
+		<link rel="stylesheet" type="text/css" href="<?php echo $this->baseUrl()?>/skin/classic/bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="<?php echo $this->baseUrl()?>/skin/classic/bootstrap/css/bootstrap-theme.min.css">
+
+		<script type="text/javascript" src="<?php echo $this->jsPath; ?>/jquery.js"></script>
+		<script type="text/javascript" src="<?php echo $this->jsPath; ?>/main.js"></script>
+		<script type="text/javascript" src="<?php echo $this->jsPath; ?>/jquery.autocomplete.js"></script>
+		<script type="text/javascript" src="<?php echo $this->jsPath; ?>/teste.js"></script>
+		<script type="text/javascript" src="<?php echo $this->baseUrl()?>/skin/classic/bootstrap/js/bootstrap.min.js"></script>
+
+		<?php echo $this->headLink() . "\n"; ?>
+		<?php echo $this->headStyle() . "\n"; ?>
+		<?php echo $this->headScript() . "\n"; ?>
+	</head>
+
+	<body>
+		<!--  CONTEUDO -->
+			<?php echo $this->layout()->content; ?>
+		<!--  FIM CONTEUDO -->
+	</body>
+
+</html>
