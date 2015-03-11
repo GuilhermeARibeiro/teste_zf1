@@ -16,7 +16,7 @@ class Model_DbTable_Categoria extends Zend_Db_Table_Abstract
 	protected $_name 	= 'tb_categoria';
 
 	/**
-	 * Nome da chave primária da tabela.
+	 * Nome da chave primÃ¡ria da tabela.
 	 *
 	 * @var string
 	 * @access protected
@@ -27,7 +27,11 @@ class Model_DbTable_Categoria extends Zend_Db_Table_Abstract
 	// ---------------------------------------------------------------------
 
 	public function buscaTodasCategorias(){
-		return $this->fetchAll();
+
+		$sql = $this->_db->select()
+					->from('tb_categoria', array('pk_categoria','desc_categoria'));
+
+		return $this->_db->fetchAll($sql);
 	}
 
 }

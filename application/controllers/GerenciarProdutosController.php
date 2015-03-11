@@ -11,8 +11,9 @@ class GerenciarProdutosController extends Zend_Controller_Action
 	{
 
 		$modelProduto = new Model_DbTable_Produto();
-
+		$promocao = array('1'=>'Ativada', '0'=>'Desativada');
 		$this->view->produtos = $modelProduto->listarProdutos();
+		$this->view->promocao = $promocao;
 	}
 
 	public function cadastrarAction()
@@ -23,16 +24,19 @@ class GerenciarProdutosController extends Zend_Controller_Action
 		$request = $this->getRequest();
 
 		if ($request->isPost()) {
+			
 			if ($form->isValid($request->getPost())) {
 
 				$data = $form->getValues();
-				$data['fk_categoria'] = 1;
+				
 				$data['status_produto'] = 1;
+				$data['dta_vigente_preco'] = date('Y-m-d');
 
 				if ($modelProduto->cadastrarProdutos($data)) {
 					$this->_redirect('/gerenciar-produtos');
 				}
 			}
+
 		}
 
 		$this->view->form = $form;
@@ -53,6 +57,7 @@ class GerenciarProdutosController extends Zend_Controller_Action
         $form->populate($produto);
 
         if ($request->isPost()) {
+        	
             if ($form->isValid($request->getPost())) {
 
                 $data = $form->getValues();

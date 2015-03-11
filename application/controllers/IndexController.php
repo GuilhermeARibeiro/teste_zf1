@@ -12,7 +12,11 @@ class IndexController extends Zend_Controller_Action
 	 */
 	public function indexAction()
 	{
-	    $this->view->page = 'produtos';
+
+		$modelProduto = new Model_DbTable_Produto();
+		$form = new Form_Produto();
+		$this->view->form = $form;
+	    $this->view->page = $modelProduto->buscaProdutoPreco();
 	}
 
 
@@ -28,7 +32,33 @@ class IndexController extends Zend_Controller_Action
 
 	public function listarAction()
 	{
-	    $this->view->page = 'produtos';
+		$id = $this->_request->getParam('id');
+
+		$modelProduto = new Model_DbTable_Produto();
+
+		$form = new Form_Produto();
+		$this->view->form = $form;
+
+	    $this->view->page = $modelProduto->buscaProdutoByCategoria($id);
+	}
+
+	public function buscaFiltroAction()
+	{
+
+		$modelProduto = new Model_DbTable_Produto();
+		$form = new Form_Produto();
+		$id = $this->_request->getParam('id');
+		$request = $this->getRequest();
+		
+		if ($request->isPost()) {
+
+			if ($modelProduto->buscaFiltro($_POST, $id )) {
+				$this->view->page = $modelProduto->buscaFiltro($_POST, $id );
+			}
+
+		}
+
+		$this->view->form = $form;
 	}
 
 	public function menuLateralAction()

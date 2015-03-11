@@ -1,0 +1,85 @@
+   <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+      <div class="container">
+		<?php echo $this->action('navigation','index')?>
+      </div><!-- /.container -->
+    </div><!-- /.navbar -->
+
+    <div class="container">
+
+      <div class="row row-offcanvas row-offcanvas-right">
+        <div class="col-xs-12 col-sm-9">
+
+          <div class="row">
+			<h3>Requisitos funcionais</h3>
+			<ul>
+				<li>
+					<p>Criar um CRUD para produtos e preços para gerenciar cadastros, alterações e exlusões. O link para o CRUD deverá ficar no menu que está no topo do site conforme o exemplo existente do CRUD de categorias.</p>
+				</li>
+				<li>
+					<p>A página inicial deverá mostrar uma listagem das categorias que tenham produtos cadastrados com o link para a lista de produtos, desenvolva com base nos exemplos que estão na página inicial e na lista de produtos.</p>
+				</li>
+				<li>
+					<p>Deverá ser adicionado um preço por produto para cada dia, ou seja, incluir uma data vigente e outra data de validade</p>
+				</li>
+				<li>
+					<p>Colocar vários produtos em promoção com a duração de dias variáveis para cada produto, ex.: de <span style="text-decoration: line-through;">R$ 59,90</span> por R$ 29,90.</p>
+				</li>
+				<li>
+					<p>A página inicial deverá mostrar o menor preço entre os produtos da categoria</p>
+				</li>
+				<li>
+					<p>A descrição do produto da página inicial, deve ser um uma concatenação entre nome da categoria e nome do produto.</p>
+				</li>
+				<li>
+					<p>Ao clicar em uma categoria da pagina inicial, o sistema deverá apresentar uma listagem de produtos.</p>
+				</li>
+				<li>
+					<p>Adicionar o filtro de produtos promocionais com os campo para digitar a data inicio e fim baseado na categoria selecionada, o filtro deverá aparecer somente na lista de produtos.</p>
+				</li>
+
+			</ul>
+
+			<h3>Requisitos não funcionais</h3>
+			<ul>
+				<li>
+					<p>A configuração da codificação do projeto deve ser desenvolvida no formato ISO-8859-1 no HTML e na base de dados deve ser usado a codificação latin1_swedish_ci</p>
+				</li>
+				<li>
+					<p>O sistema deverá ser desenvolvido utilizando o Zend Framework 1 (ZF1), em qualquer versão</p>
+				</li>
+				<li>
+					<p>O layout deverá ser desenvolvido utilizando o framework de front-end twitter bootstrap</p>
+				</li>
+				<li>
+					<p>Use o dump do SQL que se encontra dentro da pasta doc do projeto</p>
+				</li>
+				<li>
+					<p>Utilizar o SVN disponibilizado pela empresa para submeter o teste</p>
+				</li>
+			</ul>
+
+			<h3>Modelo da base de dados</h3>
+			<img src="<?php echo $this->baseUrl('doc/modelo.png')?>" />
+			</code>
+
+          </div><!--/row-->
+        </div><!--/span-->
+
+        <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
+          <?php echo $this->action('menu-lateral','index')?>
+        </div>
+      </div>
+
+      <hr>
+
+      <footer>
+        <p>&copy; Atualcard 2013</p>
+      </footer>
+
+    </div><!--/.container-->
+<?php
+$this->headScript()->appendFile( $this->baseUrl().'/skin/classic/offcanvas/js/html5shiv.js',	'text/javascript',	array('conditional' => 'lt IE 9'));
+$this->headScript()->appendFile( $this->baseUrl().'/skin/classic/offcanvas/js/respond.min.js',	'text/javascript',	array('conditional' => 'lt IE 9'));
+$this->headScript()->appendFile( $this->baseUrl().'/skin/classic/offcanvas/js/offcanvas.js',	'text/javascript');
+$this->headLink()->appendStylesheet( $this->baseUrl().'/skin/classic/offcanvas/css/offcanvas.css','screen');
+?>

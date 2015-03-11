@@ -1,7 +1,36 @@
 <div class="well sidebar-nav">
-	<ul class="nav">
-		<li><h2>Filtro</h2></li>
-		<li>Data inicial</li>
-		<li>Data final</li>
-	</ul>
+
+<form name="formProduto" id="formProduto" method="post" action="<?php echo $this->url(array('controller' => 'index', 'action' => 'busca-filtro')); ?>">
+	<table>
+        <tr>
+            <td> <?php echo $this->form->dta_inc_preco->getLabel();?></td>
+            <td>
+                <?php echo $this->form->dta_inc_preco?>
+                <?php if($this->form->dta_inc_preco->getMessages()):?>
+                    <div class="errors">
+                        <?php echo current($this->form->dta_inc_preco->getMessages())?>
+                    </div>
+                <?php endif; ?>
+            </td>
+        </tr>
+        
+        <tr>
+            <td><?php echo $this->form->dta_validade_preco->getLabel()?></td>
+            <td>
+                <?php echo $this->form->dta_validade_preco?>
+                <?php if($this->form->dta_validade_preco->getMessages()):?>
+                    <div class="errors">
+                        <?php echo current($this->form->dta_validade_preco->getMessages())?>
+                    </div>
+                <?php endif; ?>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+				<button type="submit" class="btn btn-primary">Buscar</button></li>
+			</td>
+		</tr>
+	</table>
+</form>
 </div>

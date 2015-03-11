@@ -13,47 +13,20 @@
             <p>Confira a lista de Categorias.</p>
           </div>
           <div class="row">
+          <?php foreach($this->page as $item):?>
             <div class="col-6 col-sm-6 col-lg-4">
-              <h2>Categoria 1</h2>
-              <p>Valor: a partir de R$ 5,00</p>
-              <p><a class="btn btn-default" href="<?php echo $this->url(array('controller'=>'index', 'action'=>'listar','id'=>1))?>">Mais detalhes &raquo;</a></p>
+              <h2><?php echo $item['desc_categoria'];?></h2>
+              <p><?php echo $item['desc_categoria']. " " . $item['desc_produto'];?></p>
+              <p>Valor: a partir de R$ <?php echo $item['vlr_preco'];?></p>
+              <p><a class="btn btn-default" href="<?php echo $this->url(array('controller'=>'index', 'action'=>'listar','id'=>$item['pk_categoria']))?>">Mais detalhes &raquo;</a></p>
             </div><!--/span-->
-
-            <div class="col-6 col-sm-6 col-lg-4">
-              <h2>Categoria 2</h2>
-               <p>Valor: a partir de R$ 15,00</p>
-              <p><a class="btn btn-default" href="<?php echo $this->url(array('controller'=>'index', 'action'=>'listar','id'=>2))?>">Mais detalhes &raquo;</a></p>
-            </div><!--/span-->
-
-            <div class="col-6 col-sm-6 col-lg-4">
-              <h2>Categoria 3</h2>
-               <p>Valor: a partir de R$ 12,00</p>
-              <p><a class="btn btn-default" href="<?php echo $this->url(array('controller'=>'index', 'action'=>'listar','id'=>3))?>">Mais detalhes &raquo;</a></p>
-            </div><!--/span-->
-
-           <div class="col-6 col-sm-6 col-lg-4">
-              <h2>Categoria 4</h2>
-               <p>Valor: a partir de R$ 25,00</p>
-              <p><a class="btn btn-default" href="#">Mais detalhes &raquo;</a></p>
-            </div><!--/span-->
-
-            <div class="col-6 col-sm-6 col-lg-4">
-              <h2>Categoria 5</h2>
-               <p>Valor: a partir de R$ 14,00</p>
-              <p><a class="btn btn-default" href="#">Mais detalhes &raquo;</a></p>
-            </div><!--/span-->
-
-            <div class="col-6 col-sm-6 col-lg-4">
-              <h2>Categoria 6</h2>
-               <p>Valor: a partir de R$ 18,00</p>
-              <p><a class="btn btn-default" href="#">Mais detalhes &raquo;</a></p>
-            </div><!--/span-->
+          <?php endforeach;?>
 
           </div><!--/row-->
         </div><!--/span-->
 
         <div class="col-xs-6 col-sm-3 sidebar-offcanvas" id="sidebar" role="navigation">
-			<?php echo $this->action('menu-lateral','index')?>
+			
         </div><!--/span-->
       </div><!--/row-->
 

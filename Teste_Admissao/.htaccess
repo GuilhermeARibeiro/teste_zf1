@@ -1,0 +1,7 @@
+AddDefaultCharset ISO-8859-1
+
+RewriteEngine on
+RewriteBase /
+RewriteRule !\.(js|css|ico|gif|jpg|png)$ index.php
+php_flag magic_quotes_gpc off
+php_flag register_globals off
