@@ -44,18 +44,6 @@
         </tr>
 
         <tr>
-            <td><?php echo $this->form->promocao_produto->getLabel()?></td>
-            <td>
-                <?php echo $this->form->promocao_produto?>
-                <?php if($this->form->promocao_produto->getMessages()):?>
-                    <div class="errors">
-                        <?php echo current($this->form->promocao_produto->getMessages())?>
-                    </div>
-                <?php endif; ?>
-            </td>
-        </tr>
-
-        <tr>
             <td><?php echo $this->form->dta_inc_preco->getLabel()?></td>
             <td>
                 <?php echo $this->form->dta_inc_preco?>
@@ -74,18 +62,6 @@
                 <?php if($this->form->dta_validade_preco->getMessages()):?>
                     <div class="errors">
                         <?php echo current($this->form->dta_validade_preco->getMessages())?>
-                    </div>
-                <?php endif; ?>
-            </td>
-        </tr>
-
-        <tr>
-            <td><?php echo $this->form->porcentagem_produto->getLabel()?></td>
-            <td>
-                <?php echo $this->form->porcentagem_produto?>
-                <?php if($this->form->porcentagem_produto->getMessages()):?>
-                    <div class="errors">
-                        <?php echo current($this->form->porcentagem_produto->getMessages())?>
                     </div>
                 <?php endif; ?>
             </td>

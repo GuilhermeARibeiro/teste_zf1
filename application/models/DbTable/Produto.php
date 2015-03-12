@@ -30,7 +30,7 @@ class Model_DbTable_Produto extends Zend_Db_Table_Abstract
 	public function findProduto($id)
 	{
 		$sql = $this->_db->select()
-					->from(array('pdt'=>'tb_produto' ), array('pk_produto','desc_produto','promocao_produto','porcentagem_produto'))
+					->from(array('pdt'=>'tb_produto' ), array('pk_produto','desc_produto'))
 					->join(array('prc' => 'tb_preco'),'pdt.pk_produto = prc.fk_produto')
 					->group(array('prc.fk_produto','pdt.pk_produto'))
 					->where("pdt.pk_produto = '{$id}'");
@@ -41,7 +41,7 @@ class Model_DbTable_Produto extends Zend_Db_Table_Abstract
 	public function listarProdutos()
 	{
 		$sql = $this->_db->select()
-					->from(array('pdt'=>'tb_produto' ), array('pk_produto','desc_produto','promocao_produto','porcentagem_produto'))
+					->from(array('pdt'=>'tb_produto' ), array('pk_produto','desc_produto'))
 					->join(array('prc' => 'tb_preco'),'pdt.pk_produto = prc.fk_produto')
 					->group(array('prc.fk_produto','pdt.pk_produto'));
 
@@ -51,7 +51,7 @@ class Model_DbTable_Produto extends Zend_Db_Table_Abstract
 	public function cadastrarProdutos($post)
 	{
 
-		$sql1 = $this->_db->insert('tb_produto', array('desc_produto' =>$post['desc_produto'], 'fk_categoria' =>$post['fk_categoria'], 'status_produto' =>$post['status_produto'], 'promocao_produto'=>$post['promocao_produto'], 'porcentagem_produto'=>$post['porcentagem_produto'] ));
+		$sql1 = $this->_db->insert('tb_produto', array('desc_produto' =>$post['desc_produto'], 'fk_categoria' =>$post['fk_categoria'], 'status_produto' =>$post['status_produto'] ));
 		$stmt1 =  $this->_db->prepare($sql1);
 		$rowsAdded=$stmt1->rowCount();
 		$lastId=$this->_db->lastInsertId();
@@ -64,7 +64,7 @@ class Model_DbTable_Produto extends Zend_Db_Table_Abstract
 	public function atualizarProdutos($id, $conteudo)
 	{
 
-		$sql1 = $this->_db->update('tb_produto', array("desc_produto"=>$conteudo['desc_produto'],"promocao_produto"=>$conteudo['promocao_produto'],"porcentagem_produto"=>$conteudo['porcentagem_produto'], "fk_categoria"=>$conteudo['fk_categoria']), "pk_produto ='{$id}'");
+		$sql1 = $this->_db->update('tb_produto', array("desc_produto"=>$conteudo['desc_produto'], "fk_categoria"=>$conteudo['fk_categoria']), "pk_produto ='{$id}'");
 		$this->_db->prepare($sql1);
 
 		$sql2 = $this->_db->update('tb_preco', array("dta_inc_preco" =>$conteudo['dta_inc_preco'], 'dta_validade_preco'=>$conteudo['dta_validade_preco'], "vlr_preco"=>$conteudo['vlr_preco']), "fk_produto ='{$id}'");
@@ -104,7 +104,7 @@ class Model_DbTable_Produto extends Zend_Db_Table_Abstract
 	{
 
 		$sql = $this->_db->select()
-					->from(array('pdt'=>'tb_produto' ), array('desc_produto','porcentagem_produto'))
+					->from(array('pdt'=>'tb_produto' ), array('desc_produto'))
 					->joinleft(array('prc' => 'tb_preco'),'pdt.pk_produto = prc.fk_produto')
 					->where(" pdt.fk_categoria = '{$id}'");
 
@@ -119,7 +119,7 @@ class Model_DbTable_Produto extends Zend_Db_Table_Abstract
 		if(empty($dta_ini) && empty($dta_fim)) {
 
 			$sql = $this->_db->select()
-					->from(array('pdt'=>'tb_produto' ), array('desc_produto','porcentagem_produto'))
+					->from(array('pdt'=>'tb_produto' ), array('desc_produto'))
 					->joinleft(array('prc' => 'tb_preco'),'pdt.pk_produto = prc.fk_produto')
 					->where(" pdt.fk_categoria = '{$id}'");
 
@@ -129,9 +129,9 @@ class Model_DbTable_Produto extends Zend_Db_Table_Abstract
 
 
 		$sql = $this->_db->select()
-					->from(array('pdt'=>'tb_produto' ), array('desc_produto','porcentagem_produto'))
+					->from(array('pdt'=>'tb_produto' ), array('desc_produto'))
 					->join(array('prc' => 'tb_preco'),'pdt.pk_produto = prc.fk_produto')
-					->where(" prc.dta_validade_preco between '{$dta_ini}' and '{$dta_fim}' and  pdt.fk_categoria = '{$id}' AND pdt.promocao_produto = 1");
+					->where(" prc.dta_validade_preco between '{$dta_ini}' and '{$dta_fim}' and  pdt.fk_categoria = '{$id}'");
 
 		$resultado = $this->_db->fetchAll($sql);
 		

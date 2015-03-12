@@ -14,7 +14,6 @@
             <th style="width: 40px;">ID</th>
             <th>Nome</th>
             <th>Preco</th>
-            <th>Promoção</th>
             <th style="width: 50px;">Opções</th>
         </tr>
         <?php if (count($this->produtos)):?>
@@ -23,7 +22,6 @@
             <td><?php echo $item['pk_produto']?></td>
             <td><?php echo $item['desc_produto']?></td>
             <td><?php echo $item['vlr_preco']?></td>
-            <td><?php echo $this->promocao[$item['promocao_produto']]?></td>
             <td>
                 <a href="<?php echo $this->url(array('controller' => 'gerenciar-produtos', 'action' => 'alterar', 'id' => $item['pk_produto'], 'id_preco' => $item['pk_preco'])); ?>"><img src="/skin/classic/icons/pencil.png" /></a>
                 <a onclick="return confirm('Você tem certeza que deseja excluir o produto <?php echo $item['desc_produto']?>?')" href="<?php echo $this->url(array('controller' => 'gerenciar-produtos', 'action' => 'excluir', 'id' => $item['pk_produto'])); ?>"><img src="/skin/classic/icons/cross.png" /></a>

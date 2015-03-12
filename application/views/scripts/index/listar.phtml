@@ -22,7 +22,7 @@
 						<td><?php echo $item['desc_produto'];?></td>
 
 						<td><?php if(!empty($item['dta_validade_preco']) && $item['dta_validade_preco'] != null && date('Y-m-d') <= $item['dta_validade_preco']){
-							$promocao = $item['vlr_preco'] / 100 * $item['porcentagem_produto'];
+							$promocao = $item['vlr_preco'] / 100 * 20;
 							$resultado = $item['vlr_preco'] - $promocao;
 							echo "De : <span style='text-decoration: line-through;'>R$".$item['vlr_preco'] ."</span><br /> Por: R$".$resultado;
 						}else{
